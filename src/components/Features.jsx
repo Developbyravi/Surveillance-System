@@ -2,7 +2,26 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Eye, ShieldAlert, Zap, Globe, Lock, Search } from 'lucide-react';
 
+const colorStyles = {
+  "cyber-neon": {
+    bg: "bg-cyber-neon/10",
+    text: "text-cyber-neon",
+    shadow: "group-hover:shadow-[0_0_20px_rgba(0,243,255,0.4)]"
+  },
+  "cyber-purple": {
+    bg: "bg-cyber-purple/10",
+    text: "text-cyber-purple",
+    shadow: "group-hover:shadow-[0_0_20px_rgba(188,19,254,0.4)]"
+  },
+  "cyber-blue": {
+    bg: "bg-cyber-blue/10",
+    text: "text-cyber-blue",
+    shadow: "group-hover:shadow-[0_0_20px_rgba(30,144,255,0.4)]"
+  }
+};
+
 const FeatureCard = ({ icon: Icon, title, description, color, index }) => {
+  const styles = colorStyles[color] || colorStyles["cyber-neon"];
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -11,8 +30,8 @@ const FeatureCard = ({ icon: Icon, title, description, color, index }) => {
       viewport={{ once: true }}
       className="glass-panel p-8 rounded-xl hover:-translate-y-2 transition-transform duration-300 group"
     >
-      <div className={`w-14 h-14 rounded-lg bg-${color}/10 flex items-center justify-center mb-6 group-hover:shadow-[0_0_20px_rgba(var(--color-${color}),0.4)] transition-shadow`}>
-        <Icon className={`w-8 h-8 text-${color}`} />
+      <div className={`w-14 h-14 rounded-lg flex items-center justify-center mb-6 transition-shadow ${styles.bg} ${styles.shadow}`}>
+        <Icon className={`w-8 h-8 ${styles.text}`} />
       </div>
       <h3 className="text-xl font-bold font-mono mb-3 text-white">{title}</h3>
       <p className="text-gray-400 text-sm leading-relaxed">{description}</p>
