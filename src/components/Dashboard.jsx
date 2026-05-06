@@ -47,7 +47,7 @@ const Dashboard = () => {
   useEffect(() => {
     if (isScanning) {
       // Connect to Python Backend
-      const wsUrl = import.meta.env.VITE_WS_URL || 'ws://127.0.0.1:8001/ws/detect';
+      const wsUrl = import.meta.env.VITE_WS_URL || 'wss://surveillance-system-aaxm.onrender.com/ws/detect';
       const ws = new WebSocket(wsUrl);
       wsRef.current = ws;
 
